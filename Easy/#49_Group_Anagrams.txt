@@ -1,0 +1,27 @@
+class Solution:
+    def groupAnagrams(self, strs):
+        def createDictionary(word):
+            newdict={}
+            for letter in word:
+               if letter in newdict:
+                   newdict[letter]+=1
+               else:
+                   newdict[letter] =1
+            return newdict
+        i = 0
+        worddict = []
+        listofanagramdicts = []
+        groupedanagrams = []
+        
+        for word in strs:
+            worddict.append(createDictionary(word))
+        for anagram in worddict:
+            
+            if anagram not in listofanagramdicts:
+                listofanagramdicts.append(anagram)
+                groupedanagrams.append([strs[i]])
+            else: 
+                someindex = listofanagramdicts.index(anagram)
+                groupedanagrams[someindex].append(strs[i])
+            i+=1
+        return groupedanagrams
