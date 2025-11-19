@@ -1,0 +1,18 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        frequencies = {}
+        for num in nums:
+            if num not in frequencies:
+                frequencies[num] = 1
+            else: frequencies[num] += 1
+        sorteddict = dict(sorted(frequencies.items(), key=lambda item: item[1]))
+        last_k_keys = list(sorteddict.keys())[-k:]
+        return last_k_keys
+
+---
+
+Runtime 3ms
+Beats 90.31%
+
+Memory 20.87MB
+Beats 99.16%
